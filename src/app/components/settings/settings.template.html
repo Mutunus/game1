@@ -1,0 +1,24 @@
+<top-bar title="Settings" [message]="message"></top-bar>
+
+<div class="page-cont stretch">
+
+    <form (ngSubmit)="updateSettings()" [formGroup]="form">
+
+        <div class="form-body">
+
+            <div>
+                <label>Music {{ form.get('musicOn').value ? 'On' : 'Off' }}</label>
+                <mat-slide-toggle formControlName="musicOn"></mat-slide-toggle>
+            </div>
+
+        </div>
+
+        <div class="form-footer">
+            <div class="btn-cont">
+                <button [disabled]="form.invalid" type="submit">Save Settings</button>
+            </div>
+        </div>
+
+    </form>
+
+</div>

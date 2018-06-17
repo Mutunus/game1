@@ -1,0 +1,62 @@
+<top-bar title="Deployment" [message]="message"></top-bar>
+
+<!--<ng-container *ngIf="battle$ | async as battle"></ng-container>-->
+
+<div class="page-cont stretch">
+    
+    <div>
+
+    <!--battle board-->
+        <div class="deployment-board">
+
+            <div>
+                <h4>Enemy Deployment</h4>
+                <!--<div class="opponent-first-row" [dragula]="'opponentDeployment'" [dragulaModel]="opponentDeployment.firstRow"></div>
+                <div class="opponent-second-row" [dragula]="'opponentDeployment'" [dragulaModel]="opponentDeployment.secondRow"></div>-->
+            </div>
+
+            <div>
+                <div [dragula]="'yourDeployment'" [dragulaModel]="yourDeployment.secondRow">
+                    <div *ngFor="let unit of yourDeployment.secondRow" (mouseover)="hoverUnit = unit" [ngbTooltip]="unitTooltip">
+                        <p>{{ unit.name }}</p>
+                    </div>
+                </div>
+                <div [dragula]="'yourDeployment'" [dragulaModel]="yourDeployment.firstRow">
+                    <div *ngFor="let unit of yourDeployment.firstRow" (mouseover)="hoverUnit = unit" [ngbTooltip]="unitTooltip">
+                        <p>{{ unit.name }}</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="btn-cont">
+            <button (click)="toBattle(yourDeployment, opponentDeployment)" [disabled]="yourDeployment.firstRow.length != 10 || yourDeployment.secondRow.length != 10">To Battle!</button>
+        </div>
+
+    </div>
+
+<!--<div *ngFor="let unit of yourDeployment.yourFirstRow">{{ unit.name }}</div>-->
+    
+
+    <!--units-->
+    <div class="units-cont">
+        <!--<h4>Opponent</h4>
+        <div [dragula]="'opponentDeployment'">
+            <div *ngFor="let unit of opponentUnits">
+                {{ unit.name }}
+            </div>
+        </div>-->
+        <h3>Drag units to deployment</h3>
+        <div *ngIf="yourUnits" [dragula]="'yourDeployment'" [dragulaModel]="yourUnits">
+            <div (mouseover)="hoverUnit = unit" [ngbTooltip]="unitTooltip" *ngFor="let unit of yourUnits">
+                <p>{{ unit.name }}</p>
+            </div>
+        </div>
+    </div>
+
+    <ng-template #unitTooltip>
+        <unit-tooltip [unit]="hoverUnit"></unit-tooltip>
+    </ng-template>
+
+</div>

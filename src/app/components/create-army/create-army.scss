@@ -1,0 +1,36 @@
+main {
+    display: flex;
+}
+
+.unit-details-cont {
+    width: 15vw;
+    min-width: 220px;
+}
+
+.unit-details-cont h2 {
+    margin-bottom: 20px;
+}
+
+.unit-details-cont div {
+    margin-bottom: 15px;
+}
+
+.unit-details-cont div h4 {
+    margin-bottom: 3px;
+}
+
+.btn-cont {
+    margin-bottom: 15px;
+}
+
+main {
+    margin-top: 5vh;
+}
+
+.stretch > *:not(:first-child) {
+    margin-left: 13vh;
+}
+
+.unit-list {
+    max-height: 50vh;
+}

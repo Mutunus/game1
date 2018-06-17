@@ -1,0 +1,131 @@
+<top-bar title="Create Army" [message]="message"></top-bar>
+
+<div class="page-cont">
+
+    <div class="btn-cont">
+        <select (change)="selectArmy()" [(ngModel)]="selectedArmy">
+            <option [value]="null" *ngIf="!selectedArmy">Armies</option>
+            <option *ngFor="let army of armies$ | async" [ngValue]="army">{{ army.name }}</option>
+        </select>
+        <button [disabled]="!selectedArmy || selectedUnits.length != 20 || selectedArmy.default" (click)="updateArmy()">Update Army</button>
+        <button [disabled]="!selectedArmy || selectedArmy.default" (click)="deleteArmy()">Delete Army</button>
+        <button (click)="resetForm()">Reset</button>
+    </div>
+
+    <div class="btn-cont">
+        <select [(ngModel)]="selectedUnit">
+            <option [value]="null" *ngIf="!selectedUnit">Units</option>
+            <option *ngFor="let unit of units$ | async" [ngValue]="unit">{{ unit.name }}</option>
+        </select>
+        <button [disabled]="!selectedUnit || selectedUnits.length === 20" (click)="addUnit()">Add Unit</button>
+    </div>
+
+    <main>
+
+        <div class="stretch">
+
+            <form [formGroup]="form">
+
+                <div class="form-header">
+                    <h2>Army Details</h2>
+                </div>
+
+                <div class="form-body">
+
+                    <div>
+                        <label for="name">Army Name</label>
+                        <input type="text" id="name" formControlName="name">
+                    </div>
+
+                    <div>
+                        <label for="description">Description</label>
+                        <textarea type="text" id="description" formControlName="description"></textarea>
+                    </div>
+
+                </div>
+
+                <div class="form-footer">
+                    <div class="btn-cont">
+                        <button type="button" [disabled]="form.invalid || selectedUnits.length != 20" (click)="saveArmy()">Save Army</button>
+                    </div>
+                </div>
+            </form>
+
+            <div>
+                <div class="form-header">
+                    <h2>Army Units [ {{ selectedUnits.length }}/20 ]</h2>
+                </div>
+                <div class="unit-list">
+                    <ng-container *ngIf="selectedUnits.length > 0; then unitsList; else noUnits"></ng-container>
+                </div>
+
+                <ng-template #unitsList>                
+                    <div class="list" [ngClass]="{'rose': selectedUnit && selectedUnit.unitRef === unit.unitRef}" (click)="selectedUnit = unit" class="unit-list-cont hover" *ngFor="let unit of selectedUnits; let i = index">
+                        <h5>{{ unit.name }}</h5>
+                        <div class="icon-cont">
+                            <mat-icon (click)="deleteUnit(i); $event.stopPropagation()">remove_circle</mat-icon>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template #noUnits>
+                    <h5 class="list-empty">Army has no units</h5>
+                </ng-template>
+            </div>
+
+            <div class="unit-details-cont">
+
+                <h2>Unit Details</h2>
+
+                <ng-container *ngIf="selectedUnit; then unitDetails; else noUnitSelected"></ng-container>
+
+                <ng-template #noUnitSelected>
+                    <div>
+                        <h5>No unit selected</h5>
+                    </div>
+                </ng-template>
+
+                <ng-template #unitDetails>
+                    <div>
+                        <h4>Name: </h4>
+                        <h5>{{ selectedUnit.name }}</h5>
+                    </div>
+
+                    <div>
+                        <h4>Strength: </h4>
+                        <h5>{{ selectedUnit.strength }}</h5>
+                    </div>
+
+                    <div>
+                        <h4>Attack: </h4>
+                        <h5>{{ selectedUnit.attack }}</h5>
+                    </div>
+
+                    <div>
+                        <h4>Defence: </h4>
+                        <h5>{{ selectedUnit.defence }}</h5>
+                    </div>
+
+                    <div>
+                        <h4>Morale: </h4>
+                        <h5>{{ selectedUnit.morale }}</h5>
+                    </div>
+
+                    <div>
+                        <h4>Movement: </h4>
+                        <h5>{{ selectedUnit.movement }}</h5>
+                    </div>
+
+                    <div>
+                        <h4>Description: </h4>
+                        <h5>{{ selectedUnit.description }}</h5>
+                    </div>
+
+                </ng-template>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>

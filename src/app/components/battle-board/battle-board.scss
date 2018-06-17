@@ -1,0 +1,17 @@
+.battle-board {
+    // display: flex;
+    // flex-wrap: wrap;
+    // height: 400px;
+    // width: 660px;
+}
+
+.battle-board div {
+    display: flex;
+}
+
+.battle-board div div {
+    width: 50px;
+    height: 40px;
+    background-color: green;
+    color: white;
+}

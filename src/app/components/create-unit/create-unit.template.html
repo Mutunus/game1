@@ -1,0 +1,86 @@
+<top-bar title="Create Unit" [message]="message"></top-bar>
+
+<div class="page-cont">
+
+    <div class="unit-list">
+        <div class="align unit-list-cont-two">
+            <mat-checkbox #hideDefaults (change)="filterUnits(searchUnits.value, hideDefaults.checked)"></mat-checkbox>
+            <h5>Hide Default Units</h5>            
+        </div>
+        <div class="align unit-list-cont-two">
+            <mat-icon>search</mat-icon>
+            <input type="text" #searchUnits (keyup)="filterUnits(searchUnits.value)" placeholder="Search">   
+        </div>     
+        <ng-container *ngIf="(units$ | async).length > 0; then unitsList; else noUnits"></ng-container>
+        <ng-template #unitsList>                
+            <div [ngClass]="{'rose': form.value.unitRef === unit.unitRef}" (click)="selectUnit(unit)" class="unit-list-cont hover" *ngFor="let unit of units$ | async">
+                <h5>{{ unit.name }}</h5>
+            </div>
+        </ng-template>
+        <ng-template #noUnits>
+        <div class="unit-list-cont">
+            <h5>No units</h5>
+        </div>
+        </ng-template>
+    </div>
+
+    <div class="stretch">
+
+        <form [formGroup]="form" autocomplete="off">
+
+            <div class="form-header">
+                <h2>Unit Attributes</h2>
+                <h4>Points Remaining: {{ pointsRemaining }}</h4>
+            </div>
+
+            <div class="form-body">
+
+                <div>
+                    <label for="name">Unit Name</label>
+                    <input type="text" id="name" formControlName="name">
+                </div>
+
+                <div>
+                    <label for="attack">Attack (1-100)</label>
+                    <input type="number" id="attack" formControlName="attack">
+                </div>
+
+                <div>
+                    <label for="defence">Defence (1-100)</label>
+                    <input type="number" id="defence" formControlName="defence">
+                </div>
+
+                <div>
+                    <label for="morale">Morale (1-100)</label>
+                    <input type="number" id="morale" formControlName="morale">
+                </div>
+
+                <div>
+                    <label for="movement">Movement (1-4)</label>
+                    <input type="number" id="movement" formControlName="movement">
+                </div>
+
+                <div>
+                    <label for="strength">Strength (1-1000)</label>
+                    <input type="number" id="strength" formControlName="strength">
+                </div>
+
+                <div>
+                    <label for="description">Description</label>
+                    <textarea type="text" id="description" formControlName="description"></textarea>
+                </div>
+
+            </div>
+
+            <div class="btn-cont">
+                <button type="button" (click)="saveUnit()" [disabled]="form.invalid || pointsRemaining < 0">Save Unit</button>
+                <button type="button" (click)="updateUnit()" *ngIf="selectedUnit?.unitRef" [disabled]="form.invalid || pointsRemaining < 0 || selectedUnit.default">Update Unit</button>
+                <button type="button" (click)="deleteUnit()" *ngIf="selectedUnit?.unitRef" [disabled]="selectedUnit.default">Delete Unit</button>
+                <button type="button" (click)="resetForm()">Reset</button>
+            </div>
+                        
+        </form>
+
+    </div>
+
+</div>

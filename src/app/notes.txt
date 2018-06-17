@@ -1,0 +1,48 @@
+Tasks:
+
+Stage 1:
+
+add, edit, delete units to indexedDB
+add, edit, delete armies to indexedDB
+setup battle - select armies to face each other then proceed to battle page
+
+
+Stage 2:
+
+basic styling with sass
+
+
+Stage 3:
+
+battle mechanics-
+move one unit per turn
+any unit adjacent to an enemy unit may make 1 attack against the enemy unit per turn
+
+
+Stage 4:
+
+Map terrain features with bonuses/maluses for combat
+Map creation
+
+
+Stage 5:
+
+improve styling, specifically to battle arena
+
+
+Stage 6:
+
+Set up backend
+nodeJS linked to mongoDB database
+
+tables required -
+units - unitRef, createdBy: foreignkey/users, name, description, strength, attack, defence, morale, movement
+users - id, name
+maps - id, createdBy: foreignkey/users, config: Array<string>
+
+
+Stage way too ambitious:
+
+create machine learning AI to play against
+
+

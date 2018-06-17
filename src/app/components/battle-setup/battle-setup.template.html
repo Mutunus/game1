@@ -1,0 +1,53 @@
+<top-bar title="Battle Setup" [message]="message"></top-bar>
+
+<div class="page-cont stretch">
+
+    <form (ngSubmit)="goToArena()" [formGroup]="form">
+
+        <div class="form-body">
+
+            <!--<div>
+                <label>Opponent {{ form.get('multiplayer').value ? 'Human' : 'Machine Intelligence' }}</label>
+                <mat-slide-toggle formControlName="multiplayer"></mat-slide-toggle>
+            </div>-->
+
+            <div>
+                <label for="name">Battle Name</label>
+                <input type="text" id="name" formControlName="name">
+            </div>
+
+            <!--<div *ngIf="form.get('multiplayer').value">
+                <label for="opponentRef">Opponent</label>
+                <select id="opponentRef" formControlName="opponentRef">
+                    <option [value]="null" *ngIf="!form.get('opponentRef').value">Players</option>
+                    <option *ngFor="let player of players$ | async" [ngValue]="player.playerRef">{{ player.name }}</option>
+                </select>
+            </div>-->
+            
+            <div>
+                <label for="you">Your Army</label>
+                <select id="you" (change)="setBattleName()" formControlName="player1Army">
+                    <option [value]="null" *ngIf="!form.get('player1Army').value">Armies</option>
+                    <option *ngFor="let army of armies$ | async" [ngValue]="army">{{ army.name }}</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="opponentArmy">Opponents Army</label>
+                <select id="opponentArmy" (change)="setBattleName()" formControlName="player2Army">
+                    <option [value]="null" *ngIf="!form.get('player2Army').value">Armies</option>
+                    <option *ngFor="let army of armies$ | async" [ngValue]="army">{{ army.name }}</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="form-footer">
+            <div class="btn-cont">
+                <button [disabled]="form.invalid" type="submit">Proceed</button>
+            </div>
+        </div>
+
+    </form>
+
+</div>

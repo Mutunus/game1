@@ -1,0 +1,22 @@
+<ng-container *ngIf="battle$ | async as battle">
+
+    <top-bar [title]="battle.name" [message]="message"></top-bar>
+
+    <div class="page-cont stretch">
+
+        <div class="battle-board">
+            <div *ngFor="let row of battleBoard; let y = index">
+
+                <div (click)="clickTile(tile)" *ngFor="let tile of row; let x = index">
+                    {{ x }}, {{ y }} {{ tile.name }} 
+                    
+                    <!--switch to get unit image or terrain image? -->
+                    
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</ng-container>

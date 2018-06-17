@@ -1,0 +1,225 @@
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import './styling/partials/_colors.scss';
+@import './styling/partials/_font.scss';
+@import './styling/forms.scss';
+
+// html {
+//     height: 100vh;
+// }
+
+h1, h2, h3, h4, h5 {
+    margin: 0;
+}
+
+h3, h4, h5 {
+    font-weight: normal;
+}
+
+button, label {
+    cursor: pointer;
+}
+
+li {
+    font-size: 0.9em;
+    list-style-type: none;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+:focus {
+    outline: none;
+}
+
+/* For Firefox */
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+/* Webkit browsers like Safari and Chrome */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+// body {
+//     height: 100%;
+//     width: 100%;
+//     margin: 0;
+//     font-family: $default-font;
+// }
+
+html, body {
+    margin:0;
+    padding:0;
+    height:100%;
+    font-family: $default-font;
+    background-color: #353030;
+}
+
+textarea, input, select {
+    font-family: $default-font;
+    padding: 5px;
+    background-color: #ebebeb;
+    border: none;
+}
+
+input:focus, textarea:focus, select:focus {
+    box-shadow: $default-shadow;
+}
+
+a {
+    text-decoration: none;   
+}
+
+a, h1, h2, h3, h4, h5, mat-icon, label, p {
+    color: $cream;
+}
+
+a:hover h3 {
+    color: $bright-red;
+}
+
+
+input {
+    font-family: 'Raleway', sans-serif;
+}
+
+.align {
+    display: flex;
+    align-content: center;
+    align-items: center;
+}
+
+.rose {
+    background-color: $rose !important;
+}
+
+.page-cont {
+    // height: calc(100vh - 85px);
+    padding: 10px;
+}
+
+.page-cont.center {
+    justify-content: center;
+}
+
+.stretch {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+}
+
+.icon-cont {
+    display: flex;
+    align-items: center;
+}
+
+.icon-cont:hover > * {
+    color: $bright-red;
+    cursor: pointer;
+}
+
+*::-webkit-scrollbar {
+    width: 1em;
+}
+ 
+*::-webkit-scrollbar-track {
+    display: none;
+}
+ 
+*::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background-color: #9c9999;
+    cursor: pointer;    
+}
+
+.btn-cont {
+    display: flex;
+    align-items: flex-start;
+}
+
+.btn-cont select {
+    margin-right: 10px;
+}
+
+.btn-cont button {
+    font-family: $default-font;
+    min-width: 90px;
+    font-size: 14.5px;
+    padding: 6.5px 10px;
+    background-color: #ababab;
+    border-color: #e2e1e2;
+    border-radius: 2.25px;
+    -webkit-border-radius: 2.25px;    
+    -moz-border-radius: 2.25px;    
+    border-style: solid;
+    color: black;
+    text-decoration: none;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    margin-right: 10px;
+}
+
+.btn-cont button:hover {
+    background-color: #868282;
+}
+
+.btn-cont button[disabled] {
+    background-color: #716f6f;
+}
+
+.btn-cont button[disabled]:hover {
+    cursor: default;
+}
+
+.unit-list {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 15vw;
+    min-width: 215px;
+    max-height: 95%;    
+}
+
+.unit-list .list {
+    
+}
+
+.unit-list-cont {
+    padding: 10px 5px 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.unit-list .list-empty {
+
+}
+
+.hover:hover {
+    cursor: pointer;
+    background-color: #a31c1a;
+}
+
+.gu-mirror {
+  
+}
+
+.gu-hide {
+    
+}
+
+.gu-unselectable {
+    
+}
+
+.gu-transit {
+    
+}

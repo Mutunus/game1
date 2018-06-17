@@ -1,0 +1,36 @@
+.form-header {
+    margin-bottom: 25px;
+}
+
+.form-header * {
+    margin-bottom: 15px;
+}
+
+.form-body {
+}
+
+.form-body div {
+    display: flex;
+    margin-bottom: 13px;
+}
+
+.form-body div label {
+    width: 170px;
+}
+
+.form-body div input[type='number'] {
+    width: 35px;
+}
+
+.form-body div input[type='text'], select {
+    width: 165px;
+}
+
+.form-body div textarea {
+    width: 255px;
+    height: 120px;
+}
+
+.form-footer {
+    margin-top: 25px;
+}

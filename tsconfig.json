@@ -14,6 +14,10 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    // remove this once ng-dragula fixes incompatibility issue with angular6
+    "paths": {
+      "dragula": ["../node_modules/dragula/dist/dragula.min.js"]
+    }
   }
 }
